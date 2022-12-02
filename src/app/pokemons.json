@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Pikachu",
+    "type": "Electric",
+    "image_url": "https://img.pokemondb.net/artwork/large/pikachu.jpg",
+    "description": "Pikachu description."
+  },
+  {
+    "name": "Bulbasaur",
+    "type": "Grass",
+    "image_url": "https://img.pokemondb.net/artwork/large/bulbasaur.jpg",
+    "description": "Bulbasaur description."
+  },
+  {
+    "name": "Charmander",
+    "type": "Fire",
+    "image_url": "https://img.pokemondb.net/artwork/large/charmander.jpg",
+    "description": "Charmander description."
+  },
+  {
+    "name": "Squirtle",
+    "type": "Water",
+    "image_url": "https://img.pokemondb.net/artwork/large/squirtle.jpg",
+    "description": "Squirtle description."
+  }
+]

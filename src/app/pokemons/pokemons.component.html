@@ -1,0 +1,8 @@
+<!-- create a list of pokemons -->
+<ul>
+    <li *ngFor="let pokemon of pokemons">
+      <button (click)="selectPokemon(pokemon)">{{pokemon.name}}</button>
+    </li>
+</ul>
+
+<app-pokemon-details [selectedPokemon]="selectedPokemon"></app-pokemon-details>
