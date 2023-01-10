@@ -1,9 +1,11 @@
-<div *ngIf="selectedPokemon">
-  <h2>{{ selectedPokemon.name }} details!</h2>
-<!-- set color to div -->
-  <div [style.color]="getColor(selectedPokemon.type)">
-    <label>name: {{ selectedPokemon.name }}</label>
-    <img [src]="selectedPokemon.image_url" height="50px" width="50px" alt="pokemon">
-    <p>{{ selectedPokemon.description }}</p>
-  </div>
+<div *ngIf="selectedPokemonDetail">
+  <h2>{{ selectedPokemonDetail.weight }} weigth!</h2>
+  <img [src]="selectedPokemonDetail.sprites.front_default" alt="pokemon">
+  <ul>
+    <li *ngFor="let type of selectedPokemonDetail.types">
+      <h2>{{ type.type.name }} type!</h2>
+    </li>
+  </ul>
 </div>
+<p> Those were the details</p>
+

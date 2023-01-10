@@ -1,8 +1,22 @@
 <!-- create a list of pokemons -->
-<ul>
-    <li *ngFor="let pokemon of pokemons">
-      <button (click)="selectPokemon(pokemon)">{{pokemon.name}}</button>
-    </li>
-</ul>
+<table mat-table
+  [dataSource]="dataSource">
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let pokemon"> {{pokemon.name | pokemonNiceFormat }} </td>
+  </ng-container>
+  <ng-container matColumnDef="url">
+    <th mat-header-cell *matHeaderCellDef> Weight </th>
+    <td mat-cell *matCellDef="let pokemon"> {{pokemon.url}} </td>
+  </ng-container>
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Actions </th>
+    <td mat-cell *matCellDef="let pokemon">
+      <button mat-button [routerLink]="pokemon.name">View details</button>
+    </td>
+  </ng-container>
 
-<app-pokemon-details [selectedPokemon]="selectedPokemon"></app-pokemon-details>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+  <app-pokemon-details ></app-pokemon-details>

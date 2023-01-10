@@ -1,5 +1,8 @@
 import {Component, Input} from '@angular/core';
 import {Pokemon} from "./pokemon";
+import {HttpClient} from "@angular/common/http";
+import {ActivatedRoute} from "@angular/router";
+import {PokemonService} from "../../services/pokemon.service";
 
 @Component({
   selector: 'app-pokemon-details',
@@ -7,14 +10,25 @@ import {Pokemon} from "./pokemon";
   styleUrls: ['./pokemon-details.component.scss']
 })
 export class PokemonDetailsComponent {
-  @Input() selectedPokemon: Pokemon | any;
-  constructor() { }
+  public selectedPokemonDetail: any;
+  private selectPokemon: any;
+
+  constructor(private http: HttpClient,
+              private routes: ActivatedRoute,
+              private pokemonService: PokemonService) {}
 
   ngOnInit() {
+    // console.log('OnInit on DetailsComponent');
+    this.routes.params.subscribe((parameters) => {
+      const name = parameters['id'];
 
-  }
-  selectPokemon(pokemon: any) {
-    this.selectedPokemon = pokemon;
+      this.pokemonService.getPokemonByName(name).then((Pokemon: any) => {
+        this.selectedPokemonDetail = Pokemon;
+        this.selectPokemon = Pokemon;
+        console.log(this.selectedPokemonDetail);
+        console.log(this.selectPokemon);
+      });
+    });
   }
 
   getColor(type: string) {

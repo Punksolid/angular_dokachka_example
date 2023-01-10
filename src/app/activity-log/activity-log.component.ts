@@ -6,7 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./activity-log.component.scss']
 })
 export class ActivityLogComponent {
-  addActivity(activity: string): void {
+
+  static addActivity(activity: string) {
     console.log(activity);
   }
 }
