@@ -25,6 +25,8 @@ import {MatCardModule} from "@angular/material/card";
 import {MatInputModule} from "@angular/material/input";
 import {MatTableModule} from "@angular/material/table";
 import {PokemonNiceFormatPipe} from './pipes/pokemon-nice-format.pipe';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 const httpInterceptorProviders = [
   {provide: HTTP_INTERCEPTORS, useClass: InsertCommonHeadersInterceptor, multi: true}
@@ -39,7 +41,8 @@ const httpInterceptorProviders = [
     LoginComponent,
     NotFoundComponent,
     NavigationComponent,
-    PokemonNiceFormatPipe
+    PokemonNiceFormatPipe,
+    DashboardComponent
   ],
   imports: [
     MatSlideToggleModule,
@@ -58,7 +61,8 @@ const httpInterceptorProviders = [
     MatMenuModule,
     MatCardModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
+    MatGridListModule
   ],
   providers: [
     LoginGuard,
