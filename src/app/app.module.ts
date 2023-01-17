@@ -27,6 +27,8 @@ import {MatTableModule} from "@angular/material/table";
 import {PokemonNiceFormatPipe} from './pipes/pokemon-nice-format.pipe';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
+import {UsersModule} from "./users/users.module";
+import { PokemonBackgroundColorDirective } from './pokemon-background-color.directive';
 
 const httpInterceptorProviders = [
   {provide: HTTP_INTERCEPTORS, useClass: InsertCommonHeadersInterceptor, multi: true}
@@ -42,7 +44,9 @@ const httpInterceptorProviders = [
     NotFoundComponent,
     NavigationComponent,
     PokemonNiceFormatPipe,
-    DashboardComponent
+    DashboardComponent,
+    PokemonBackgroundColorDirective,
+    PokemonBackgroundColorDirective
   ],
   imports: [
     MatSlideToggleModule,
@@ -62,7 +66,8 @@ const httpInterceptorProviders = [
     MatCardModule,
     MatInputModule,
     MatTableModule,
-    MatGridListModule
+    MatGridListModule,
+    UsersModule
   ],
   providers: [
     LoginGuard,

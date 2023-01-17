@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {Pokemon} from "./pokemon";
 import {HttpClient} from "@angular/common/http";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {PokemonService} from "../../services/pokemon.service";
 
 @Component({
@@ -12,10 +12,15 @@ import {PokemonService} from "../../services/pokemon.service";
 export class PokemonDetailsComponent {
   public selectedPokemonDetail: any;
   private selectPokemon: any;
+  public color: string = '#ed03a5';
+  public displayedColumns: any;
 
   constructor(private http: HttpClient,
               private routes: ActivatedRoute,
-              private pokemonService: PokemonService) {}
+              private pokemonService: PokemonService,
+              private router: Router
+  ) {
+  }
 
   ngOnInit() {
     // console.log('OnInit on DetailsComponent');
@@ -24,6 +29,7 @@ export class PokemonDetailsComponent {
 
       this.pokemonService.getPokemonByName(name).then((Pokemon: any) => {
         this.selectedPokemonDetail = Pokemon;
+        this.color = this.getColor(this.selectedPokemonDetail.types[0].type.name);
         this.selectPokemon = Pokemon;
         console.log(this.selectedPokemonDetail);
         console.log(this.selectPokemon);
@@ -32,19 +38,36 @@ export class PokemonDetailsComponent {
   }
 
   getColor(type: string) {
+    let color: string = '#ffffff';
+
     switch (type) {
-      case 'Grass':
-        return '#9bcc50';
-      case 'Fire':
-        return '#fd7d24';
-      case 'Flying':
-        return '#3dc7ef';
-      case 'Water':
-        return '#4592c4';
-      case 'Electric':
-        return '#eed535';
+      case 'grass':
+        color = '#9bcc50';
+        break;
+      case 'fire':
+        color = '#a30c0c';
+        break;
+      case 'flying':
+        color = '#3dc7ef';
+        break;
+      case 'water':
+        color = '#4592c4';
+        break;
+      case 'electric':
+        color = '#eed535';
+        break;
+      case 'normal':
+        color = '#8b8f93';
+        break;
+      case 'bug':
+        color = '#162a01';
     }
 
-    return '#fff';
+    return  color;
+  }
+
+
+  goBack() {
+    this.router.navigate(['/pokemons']);
   }
 }

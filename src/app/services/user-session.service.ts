@@ -4,9 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserSessionService {
-  // add a global variable
   private isUserLoggedVariable:boolean = false;
-
 
   constructor() { }
 
@@ -16,5 +14,9 @@ export class UserSessionService {
 
   isUserLogged() {
     return this.isUserLoggedVariable;
+  }
+
+  logout() {
+    this.isUserLoggedVariable = false;
   }
 }

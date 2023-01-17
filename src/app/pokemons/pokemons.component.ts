@@ -41,6 +41,8 @@ export class PokemonsComponent implements OnChanges, OnInit, DoCheck,AfterConten
 
   ngOnInit() {
     this.displayedColumns= ['name', 'url', 'actions'];
+    console.log('On init pokemons list');
+    console.log('Is user logged? ' + this.userSessionService.isUserLogged());
   }
 
   ngAfterContentInit() {
