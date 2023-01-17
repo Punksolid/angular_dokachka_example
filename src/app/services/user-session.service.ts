@@ -9,6 +9,7 @@ export class UserSessionService {
   constructor() { }
 
   logUserIn() {
+    console.log('logging user in');
     this.isUserLoggedVariable = true;
   }
 

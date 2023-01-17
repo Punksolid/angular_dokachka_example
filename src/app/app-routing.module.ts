@@ -8,7 +8,7 @@ import {NotFoundComponent} from "./not-found/not-found.component";
 import {ListComponent} from "./users/list/list.component";
 
 const routes: Routes = [
-  { path: 'users', component: ListComponent },
+  { path: 'users', component: ListComponent, canActivate: [LoginGuard] },
   { path: 'pokemons', component: PokemonsComponent, canActivate: [LoginGuard] },
   { path: 'pokemons/:id', component: PokemonDetailsComponent },
   { path: 'login', component: LoginComponent },

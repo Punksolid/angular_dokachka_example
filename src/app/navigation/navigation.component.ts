@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import {UserSessionService} from "../services/user-session.service";
 
 @Component({
   selector: 'app-navigation',
@@ -16,6 +17,10 @@ export class NavigationComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver, private userSession: UserSessionService) {}
 
+  logout() {
+    console.log('logout');
+    this.userSession.logout();
+  }
 }
