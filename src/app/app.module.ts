@@ -29,6 +29,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import {UsersModule} from "./users/users.module";
 import { PokemonBackgroundColorDirective } from './pokemon-background-color.directive';
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 const httpInterceptorProviders = [
   {provide: HTTP_INTERCEPTORS, useClass: InsertCommonHeadersInterceptor, multi: true}
@@ -67,6 +68,7 @@ const httpInterceptorProviders = [
     MatInputModule,
     MatTableModule,
     MatGridListModule,
+    MatSnackBarModule,
     UsersModule
   ],
   providers: [

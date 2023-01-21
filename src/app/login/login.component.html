@@ -14,14 +14,17 @@
         <h3>Access to list</h3>
       </mat-card-subtitle>
       <mat-card-content>
-        <form [formGroup]="loginform" (submit)="logUserIn()" class="login-form">
-          <mat-form-field class="login-full-width">
+        <form [formGroup]="loginForm" (submit)="logUserIn()" class="login-form">
+          <mat-form-field class="login-full-width" >
             <mat-label>Username</mat-label>
-            <input type="text" matInput name="username" placeholder="Username" required/>
+            <input type="text" matInput name="username" placeholder="Username" required formControlName="username" />
           </mat-form-field>
-          <mat-form-field class="login-full-width">
+          <mat-form-field class="login-full-width"  >
             <mat-label>Password</mat-label>
-            <input type="password" matInput name="password" placeholder="Password" />
+            <input [type]="inputType" matInput name="password" placeholder="Password" formControlName="password"/>
+            <mat-icon matSuffix (click)="toggleHide()" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              {{hide ? 'visibility_off' : 'visibility'}}
+            </mat-icon>
           </mat-form-field>
           <button mat-raised-button color="primary" class="login-full-width" value="Login" type="submit">Login</button>
         </form>

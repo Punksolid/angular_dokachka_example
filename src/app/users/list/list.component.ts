@@ -1,44 +1,35 @@
-import { Component } from '@angular/core';
-
-
-interface User {
-  id: number;
-  name: string;
-  actions: string;
-}
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {MatTableDataSource} from "@angular/material/table";
+import {MatSort} from "@angular/material/sort";
+import {UsersMockServiceService} from "../../users-mock-service.service";
+import { User} from "../../interfaces/user";
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class ListComponent {
-  public dataSource2: User[];
-  public displayedColumns: any;
+export class ListComponent implements AfterViewInit {
+  public displayedColumns: string[] = ['id', 'name', 'username', 'actions'];
+  public usersDataSource !: MatTableDataSource<User>;
 
-  constructor() {
-    this.dataSource2 = [
-      {id: 1, name: 'Jose', actions: 'actions'},
-      {id: 2, name: 'Manuel', actions: 'actions'},
-      {id: 3, name: 'Pedro', actions: 'actions'},
-      {id: 4, name: 'Carlos', actions: 'actions'},
-    ];
+  @ViewChild(MatSort, {static:true}) sort?:MatSort ;
+
+  constructor(private usersMockService: UsersMockServiceService) {}
+  ngAfterViewInit() {
+    if (this.sort){
+      this.usersDataSource.sort = this.sort;
+    }
   }
-
   ngOnInit() {
-
-    this.displayedColumns= ['name', 'actions'];
+    this.usersDataSource = new MatTableDataSource<User>(this.usersMockService.userStorage);
+    if (this.sort){
+      this.usersDataSource.sort = this.sort;
+    }
   }
-
-  // edit(element) {
-  //
-  // }
-  //
-  // delete(element) {
-  //
-  // }
   deleteUser(user: User) {
-    console.log(user);
-    this.dataSource2 = this.dataSource2.filter((element) => element.id !== user.id);
+    this.usersMockService.deleteUser(user);
+    this.usersDataSource = new MatTableDataSource<User>(this.usersMockService.userStorage);
   }
+
 }
