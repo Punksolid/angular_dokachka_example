@@ -25,9 +25,9 @@ export class UserNewComponent implements OnInit {
 
   ngOnInit(): void {
     this.newUserForm = this.formBuilder.group({
-      name: ['', Validators.required, Validators.min(3)],
-      username: '',
-      password: '',
+      name: ['', Validators.required],
+      username: ['', Validators.required],
+      password: ['', Validators.required]
     });
 
   }
