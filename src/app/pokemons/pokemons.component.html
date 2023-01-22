@@ -1,5 +1,7 @@
+
+
 <table mat-table
-  [dataSource]="dataSource">
+       [dataSource]="dataSource">
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef> Name </th>
     <td mat-cell *matCellDef="let pokemon"> {{pokemon.name | pokemonNiceFormat }} </td>
@@ -11,11 +13,22 @@
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef> Actions </th>
     <td mat-cell *matCellDef="let pokemon">
-      <button mat-button [routerLink]="pokemon.name">View details</button>
+      <button mat-button (click)="viewPokemonDetail(pokemon.name)">View details</button>
     </td>
   </ng-container>
-
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-  <app-pokemon-details ></app-pokemon-details>
+<mat-card>
+  <mat-card-title>Pokemons Owned</mat-card-title>
+  <mat-card-content>
+    <div *ngFor="let pokemon of ownedPokemons">
+      <p>{{ pokemon.name }}</p>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<div *ngIf="selectedPokemonDetail">
+  <app-pokemon-details [pokemon]="selectedPokemonDetail" (pokemonSavedInPokeball)="pokemonOwned($event)"></app-pokemon-details>
+</div>
+

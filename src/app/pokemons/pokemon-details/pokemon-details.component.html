@@ -1,37 +1,35 @@
-<div *ngIf="selectedPokemonDetail">
-  <mat-card  [appPokemonBackgroundColor]="selectedPokemonDetail.types[0].type.name" >
+<mat-card  [appPokemonBackgroundColor]="pokemon.types[0].type.name" >
 
-    <mat-card-header>
-      <mat-card-title>{{ selectedPokemonDetail.name | pokemonNiceFormat }}</mat-card-title>
-      <mat-card-subtitle>{{ selectedPokemonDetail.types[0].type.name | pokemonNiceFormat }}</mat-card-subtitle>
-    </mat-card-header>
+  <mat-card-header>
+    <mat-card-title>{{ pokemon.name | pokemonNiceFormat }}</mat-card-title>
+    <mat-card-subtitle>{{ pokemon.types[0].type.name | pokemonNiceFormat }}</mat-card-subtitle>
+  </mat-card-header>
 
-    <mat-card-content>
-      <img [src]="selectedPokemonDetail.sprites.other.dream_world.front_default" alt="pokemon">
-      <mat-grid-list cols="2" rowHeight="10:1">
-        <mat-grid-tile><b>Property</b></mat-grid-tile>
-        <mat-grid-tile><b>Value</b></mat-grid-tile>
-        <mat-grid-tile>Height</mat-grid-tile>
-        <mat-grid-tile>{{ selectedPokemonDetail.height }}</mat-grid-tile>
-        <mat-grid-tile>Weight</mat-grid-tile>
-        <mat-grid-tile>{{ selectedPokemonDetail.weight }}</mat-grid-tile>
-        <mat-grid-tile>Base Experience</mat-grid-tile>
-        <mat-grid-tile>{{ selectedPokemonDetail.base_experience }}</mat-grid-tile>
-        <mat-grid-tile>Abilities</mat-grid-tile>
-        <mat-grid-tile>{{ selectedPokemonDetail.abilities[0].ability.name | pokemonNiceFormat }}</mat-grid-tile>
-      </mat-grid-list>
+  <mat-card-content>
+    <img [src]="pokemon.sprites.other.dream_world.front_default" alt="pokemon">
+    <mat-grid-list cols="2" rowHeight="10:1">
+      <mat-grid-tile><b>Property</b></mat-grid-tile>
+      <mat-grid-tile><b>Value</b></mat-grid-tile>
+      <mat-grid-tile>Height</mat-grid-tile>
+      <mat-grid-tile>{{ pokemon.height }}</mat-grid-tile>
+      <mat-grid-tile>Weight</mat-grid-tile>
+      <mat-grid-tile>{{ pokemon.weight }}</mat-grid-tile>
+      <mat-grid-tile>Base Experience</mat-grid-tile>
+      <mat-grid-tile>{{ pokemon.base_experience }}</mat-grid-tile>
+      <mat-grid-tile>Abilities</mat-grid-tile>
+      <mat-grid-tile>{{ pokemon.abilities[0].ability.name | pokemonNiceFormat }}</mat-grid-tile>
+    </mat-grid-list>
 
-      <h3>Types</h3>
-      <ul>
-        <li *ngFor="let type of selectedPokemonDetail.types">
-          <h2>{{ type.type.name }} type!</h2>
-        </li>
-      </ul>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button (click)="goBack()">Back</button>
-    </mat-card-actions>
-  </mat-card>
-</div>
+    <h3>Types</h3>
+    <ul>
+      <li *ngFor="let type of pokemon.types">
+        <h2>{{ type.type.name }} type!</h2>
+      </li>
+    </ul>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="savePokemon(pokemon)">Store in POKE BALL</button>
+  </mat-card-actions>
+</mat-card>
 
 

@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'users/new', component: UserNewComponent },
   { path: 'users/:id/edit', component: UserEditComponent },
   { path: 'pokemons', component: PokemonsComponent, canActivate: [LoginGuard] },
-  { path: 'pokemons/:id', component: PokemonDetailsComponent },
+  // { path: 'pokemons/:id', component: PokemonDetailsComponent },
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: '**', component: NotFoundComponent },

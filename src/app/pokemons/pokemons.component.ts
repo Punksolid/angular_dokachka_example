@@ -1,11 +1,16 @@
-import {AfterContentInit, ChangeDetectionStrategy, Component, DoCheck, OnChanges, OnInit} from '@angular/core';
-// import pokemons from '../pokemons.json';
+import {
+  AfterContentInit,
+  Component,
+  DoCheck,
+  OnChanges,
+  OnInit
+} from '@angular/core';
 import {ActivityLogComponent} from '../activity-log/activity-log.component';
-import {HttpClient} from "@angular/common/http";
-import {resolve} from "@angular/compiler-cli";
 import {PokemonService} from "../services/pokemon.service";
 import {UserSessionService} from "../services/user-session.service";
 import {Router} from "@angular/router";
+import { PokemonInterface } from "../interfaces/pokemon-interface";
+import {PokemonDetailsComponent} from "./pokemon-details/pokemon-details.component";
 
 
 @Component({
@@ -14,12 +19,16 @@ import {Router} from "@angular/router";
   styleUrls: ['./pokemons.component.scss']
 })
 export class PokemonsComponent implements OnChanges, OnInit, DoCheck,AfterContentInit {
-  // public pokemons:any = [];
+
   public pokemons?: any;
   public selectedPokemon: any;
   public showDetail: any;
   public dataSource: any;
   public displayedColumns: any;
+  public shouldShowPokemonDetail: boolean = false
+  public selectedPokemonDetail: any;
+  public ownedPokemons: Array<any> = [];
+
 
   constructor(private pokemonService: PokemonService,
               private router: Router,
@@ -43,6 +52,8 @@ export class PokemonsComponent implements OnChanges, OnInit, DoCheck,AfterConten
     this.displayedColumns= ['name', 'url', 'actions'];
     console.log('On init pokemons list');
     console.log('Is user logged? ' + this.userSessionService.isUserLogged());
+    // @ts-ignore
+    this.pokemonDetailsComponent.selectedPokemonDetail = {};
   }
 
   ngAfterContentInit() {
@@ -68,4 +79,16 @@ export class PokemonsComponent implements OnChanges, OnInit, DoCheck,AfterConten
   }
 
 
+  viewPokemonDetail(name: string) {
+
+    this.shouldShowPokemonDetail = true;
+
+    this.pokemonService.getPokemonByName(name).then((Pokemon: any) => {
+      this.selectedPokemonDetail = Pokemon;
+    });
+  }
+
+  pokemonOwned(event: any) {
+    this.ownedPokemons.push(event);
+  }
 }
