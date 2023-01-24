@@ -27,9 +27,9 @@ import {MatTableModule} from "@angular/material/table";
 import {PokemonNiceFormatPipe} from './pipes/pokemon-nice-format.pipe';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
-import {UsersModule} from "./users/users.module";
 import { PokemonBackgroundColorDirective } from './pokemon-background-color.directive';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatFormFieldModule} from "@angular/material/form-field";
 
 const httpInterceptorProviders = [
   {provide: HTTP_INTERCEPTORS, useClass: InsertCommonHeadersInterceptor, multi: true}
@@ -50,7 +50,7 @@ const httpInterceptorProviders = [
     PokemonBackgroundColorDirective
   ],
   imports: [
-    MatSlideToggleModule,
+    // Angular modules
     BrowserModule,
     FormsModule,
     HttpClientModule,
@@ -58,7 +58,8 @@ const httpInterceptorProviders = [
     ReactiveFormsModule,
     BrowserAnimationsModule,
     LayoutModule,
-    MatToolbarModule,
+    // Material modules
+    MatSlideToggleModule,
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
@@ -69,7 +70,11 @@ const httpInterceptorProviders = [
     MatTableModule,
     MatGridListModule,
     MatSnackBarModule,
-    UsersModule
+    MatToolbarModule,
+    MatFormFieldModule,
+
+    // Business modules
+    // UsersModule changed to lazy loading
   ],
   providers: [
     LoginGuard,

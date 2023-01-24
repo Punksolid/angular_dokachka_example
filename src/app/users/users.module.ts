@@ -13,27 +13,34 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatCardModule} from "@angular/material/card";
 import {MatInputModule} from "@angular/material/input";
 import {UserEditComponent} from "../user-edit/user-edit.component";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {UserRegisterComponent} from "../user-register/user-register.component";
 
 
 @NgModule({
   declarations: [
     ListComponent,
     UserNewComponent,
-    UserEditComponent
+    UserEditComponent,
+    UserRegisterComponent
   ],
   imports: [
-    CommonModule,
-    FormsModule,
-    UsersRoutingModule,
+    // Material modules
     MatTableModule,
     MatIconModule,
     MatButtonModule,
-    MatListModule,
-    MatSortModule,
-    FormsModule,
-    ReactiveFormsModule,
     MatCardModule,
-    MatInputModule
+    MatSortModule,
+    MatInputModule,
+    MatListModule,
+    MatFormFieldModule,
+    // Angular modules
+    CommonModule,
+    UsersRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
+    // Other modules
+
   ]
 })
 export class UsersModule {

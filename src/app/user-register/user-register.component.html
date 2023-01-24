@@ -1,0 +1,43 @@
+<form #userRegisterForm="ngForm">
+  <mat-form-field>
+    <label for="name">Name</label>
+    <input type="text"
+           class="form-control"
+           id="name"
+           placeholder="Enter name"
+           name="name"
+           matInput
+           ngModel
+           #name="ngModel"
+           required
+    >
+  </mat-form-field>
+  <mat-form-field>
+    <label for="username">Username</label>
+    <input type="text"
+           class="form-control"
+           id="username"
+           placeholder="Enter username"
+           name="username"
+           matInput
+           ngModel
+           #username="ngModel"
+           required
+    >
+  </mat-form-field>
+  <mat-form-field>
+    <label for="password">Password</label>
+    <input type="password"
+           class="form-control"
+           id="password"
+           placeholder="Enter password"
+           name="password"
+           matInput
+           ngModel
+           #password="ngModel"
+           required
+    >
+
+  </mat-form-field>
+  <button type="submit" class="mdc-button" (click)="registerUser(userRegisterForm)">Register User</button>
+</form>
