@@ -3,7 +3,7 @@ import {
   Component,
   DoCheck,
   OnChanges,
-  OnInit
+  OnInit, ViewChild
 } from '@angular/core';
 import {ActivityLogComponent} from '../activity-log/activity-log.component';
 import {PokemonService} from "../services/pokemon.service";
@@ -11,6 +11,7 @@ import {UserSessionService} from "../services/user-session.service";
 import {Router} from "@angular/router";
 import { PokemonInterface } from "../interfaces/pokemon-interface";
 import {PokemonDetailsComponent} from "./pokemon-details/pokemon-details.component";
+import {PokeBallComponent} from "./poke-ball/poke-ball.component";
 
 
 @Component({
@@ -19,6 +20,10 @@ import {PokemonDetailsComponent} from "./pokemon-details/pokemon-details.compone
   styleUrls: ['./pokemons.component.scss']
 })
 export class PokemonsComponent implements OnChanges, OnInit, DoCheck,AfterContentInit {
+
+  @ViewChild(PokeBallComponent, {static: false})
+  public pokeBallComponent?: PokeBallComponent;
+
 
   public pokemons?: any;
   public selectedPokemon: any;
@@ -90,5 +95,13 @@ export class PokemonsComponent implements OnChanges, OnInit, DoCheck,AfterConten
 
   pokemonOwned(event: any) {
     this.ownedPokemons.push(event);
+  }
+
+  throwPokemon(pokemon: any) {
+
+  }
+
+  discardAllPokemons() {
+    this.pokeBallComponent?.releaseAllPokemons();
   }
 }

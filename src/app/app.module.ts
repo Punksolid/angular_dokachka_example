@@ -30,6 +30,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { PokemonBackgroundColorDirective } from './pokemon-background-color.directive';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatFormFieldModule} from "@angular/material/form-field";
+import { PokeBallComponent } from './pokemons/poke-ball/poke-ball.component';
 
 const httpInterceptorProviders = [
   {provide: HTTP_INTERCEPTORS, useClass: InsertCommonHeadersInterceptor, multi: true}
@@ -47,7 +48,8 @@ const httpInterceptorProviders = [
     PokemonNiceFormatPipe,
     DashboardComponent,
     PokemonBackgroundColorDirective,
-    PokemonBackgroundColorDirective
+    PokemonBackgroundColorDirective,
+    PokeBallComponent
   ],
   imports: [
     // Angular modules

@@ -19,14 +19,9 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-<mat-card>
-  <mat-card-title>Pokemons Owned</mat-card-title>
-  <mat-card-content>
-    <div *ngFor="let pokemon of ownedPokemons">
-      <p>{{ pokemon.name }}</p>
-    </div>
-  </mat-card-content>
-</mat-card>
+<app-poke-ball [ownedPokemons]="ownedPokemons" ></app-poke-ball>
+<!-- button discard all pokemons -->
+<button mat-raised-button color="warn" (click)="discardAllPokemons()">Discard all pokemons</button>
 
 <div *ngIf="selectedPokemonDetail">
   <app-pokemon-details [pokemon]="selectedPokemonDetail" (pokemonSavedInPokeball)="pokemonOwned($event)"></app-pokemon-details>
